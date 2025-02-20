@@ -1,5 +1,5 @@
 <?php
-namespace App\service;
+namespace App\Service;
 
 use Symfony\Component\HttpClient\HttpClient;
 use League\Csv\Reader;
