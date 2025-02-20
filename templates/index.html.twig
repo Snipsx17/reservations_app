@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reservation</title>
+</head>
+<body>
+    <h1>Reservation list</h1>
+    <form method="get">
+        <input type="text" name="search" placeholder="Search..." value="{{ search }}">
+        <button type="submit">Search</button>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Localizador</th>
+                <th>Huésped</th>
+                <th>Fecha de Entrada</th>
+                <th>Fecha de Salida</th>
+                <th>Hotel</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation['Localizador'] }}</td>
+                    <td>{{ reservation['Huésped'] }}</td>
+                    <td>{{ reservation['fecha_de_entrada'] }}</td>
+                    <td>{{ reservation['fecha_de_salida'] }}</td>
+                    <td>{{ reservation['Hotel'] }}</td>
+                    <td>{{ reservation['Precio'] }}</td>
+                    <td>{{ reservation['Posibles_acciones'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>
