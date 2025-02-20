@@ -34,4 +34,16 @@ class ReservationController extends AbstractController
         ]);
     }
 
+    #[Route('/download-json', name: 'download_json')]
+    public function downloadJson(): Response
+    {
+        $reservation = $this->reservationService->getReservation();
+        $reservationsAsJson = json_encode($reservation, JSON_PRETTY_PRINT);
+
+        return new Response($reservationsAsJson, 200, [
+            'Content-Type' => 'application/json',
+            'Content-Disposition' => 'attachment; filename="reservations.json"',
+        ]);
+    }
+
 }
