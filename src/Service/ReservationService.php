@@ -24,6 +24,17 @@ class ReservationService
 
         $data = $response->getContent();
 
-        
+        $csv = Reader::createFromString($data);
+        $csv->setDelimiter(';');
+
+        $headers = ['Localizador', 'Huésped', 'fecha_de_entrada', 'fecha_de_salida', 'Hotel', 'Precio', 'Posibles_acciones'];
+
+        // merge headers and reservations data
+        $records = [];
+        foreach ($csv->getRecords() as $record) {
+            $records[] = array_combine($headers, $record);
+        }
+
+        return $records;
     }
 }
