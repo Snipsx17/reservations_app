@@ -16,5 +16,14 @@ class ReservationService
         $this->httpClient = HttpClient::create();
     }
 
-    
+    public function getReservationsData(): array
+    {
+        $response = $this->httpClient->request('GET', $this->csvUrl, [
+            'auth_basic' => [$this->authUser, $this->authPassword],
+        ]);
+
+        $data = $response->getContent();
+
+        
+    }
 }
